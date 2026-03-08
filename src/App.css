@@ -3,10 +3,11 @@
   --primary-color: #e4a20f;
   --secondary-color: #f5c93b;
   --accent-color: #ffda44;
-  --dark-text: #2c3e50;
+  --dark-text: #171A1C;
   --light-text: #6c757d;
   --white: #ffffff;
   --light-gray: #f8f9fa;
+  --ligth-yellow: #fff7e6;
   --border-gray: #e5e7eb;
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -365,8 +366,7 @@ body {
 
 /* === HERO BILLBOARD === */
 .hero-billboard {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  min-height: 80vh;
   position: relative;
   overflow: hidden;
 }
@@ -397,11 +397,11 @@ body {
 
 .billboard-screen {
   position: absolute;
-  top: 20%;
+  top: 8%;
   left: 50%;
   transform: translateX(-50%);
-  width: 95%;
-  height: 50%;
+  width: 98%;
+  height: 53%;
   border-radius: 8px;
   overflow: hidden;
   background: #000;
@@ -491,14 +491,14 @@ body {
 }
 
 .floating-stat.stat-1 {
-  top: 15%;
-  right: 10%;
+  top: 6%;
+  right: -2%;
   animation-delay: 0s;
 }
 
 .floating-stat.stat-2 {
   top: 10%;
-  right: 75%;
+  right: 82%;
   animation-delay: 0.5s;
 }
 
@@ -675,14 +675,30 @@ body {
   border-top: 4px solid var(--primary-color);
 }
 
-.feature-box:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-lg);
+.feature-box:hover .feature-icon {
+  background: var(--primary-color);
+  transform: scale(1.05);
+}
+
+.feature-box:hover .feature-img {
+  filter: brightness(0) invert(1);
 }
 
 .feature-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--light-gray);
+  border-radius: 15px;
+}
+
+.feature-img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
 }
 
 .feature-box h3 {
@@ -882,15 +898,15 @@ body {
 
 .why-grid-new {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-top: 3rem;
 }
 
 .why-card-new {
   background: var(--white);
-  padding: 2rem;
-  border-radius: 20px;
+  padding: 2.3rem;
+  border-radius: 18px;
   position: relative;
   transition: var(--transition);
   box-shadow: var(--shadow-sm);
@@ -919,8 +935,20 @@ body {
 }
 
 .why-icon-new {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  width: 70px;
+  height: 70px;
+  background: var(--ligth-yellow);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.why-icon-new img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }
 
 .why-card-new h3 {
@@ -2001,7 +2029,7 @@ body {
   }
 
   .why-grid-new {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .services-grid-new {
@@ -2116,6 +2144,10 @@ body {
   .success-metrics {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+
+  .why-grid-new {
+    grid-template-columns: 1fr;
   }
 }
 

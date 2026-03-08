@@ -13,7 +13,7 @@ const Footer = () => {
               <h3>MINAAL PUBLICITY</h3>
             </div>
             <p>
-              Pioneers in out-of-home advertising since 2009. Transforming
+              Pioneers in out-of-home advertising since 1999. Transforming
               outdoor spaces into powerful brand experiences across Rajkot and
               Saurashtra.
             </p>

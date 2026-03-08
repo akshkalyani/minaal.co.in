@@ -4,41 +4,41 @@ const WhyChooseUs = () => {
   const reasons = [
     {
       number: "01",
-      icon: "🗺️",
+      icon: "icons/presence.png",
       title: "Complete Coverage",
       description:
         "Extensive network across Rajkot, Jamnagar, Junagadh, and all major Saurashtra cities",
     },
     {
       number: "02",
-      icon: "💰",
+      icon: "icons/value.png",
       title: "Best Value",
       description:
         "Competitive pricing with transparent costs and flexible payment plans",
     },
     {
       number: "03",
-      icon: "🎨",
+      icon: "icons/creative.png",
       title: "Creative Excellence",
       description:
         "In-house design team creating compelling campaigns that convert",
     },
     {
       number: "04",
-      icon: "🛠️",
+      icon: "icons/service.png",
       title: "Full Service",
       description: "From concept to installation - we handle everything",
     },
     {
       number: "05",
-      icon: "📊",
+      icon: "icons/data.png",
       title: "Data Driven",
       description:
         "Strategic placement based on traffic analysis and demographic data",
     },
     {
       number: "06",
-      icon: "⭐",
+      icon: "icons/trust.png",
       title: "Trusted Partner",
       description: "15+ years serving 200+ satisfied clients across industries",
     },
@@ -57,7 +57,9 @@ const WhyChooseUs = () => {
           {reasons.map((reason, index) => (
             <div key={index} className="why-card-new">
               <div className="why-number">{reason.number}</div>
-              <div className="why-icon-new">{reason.icon}</div>
+              <div className="why-icon-new">
+                <img src={reason.icon} alt={reason.title} />
+              </div>
               <h3>{reason.title}</h3>
               <p>{reason.description}</p>
             </div>

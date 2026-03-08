@@ -17,7 +17,7 @@ const Contact = () => {
     {
       icon: "📱",
       title: "Call Us",
-      content: "+91 98250 76797\n+91 88888 88888",
+      content: "+91 98250 76797",
     },
     {
       icon: "🕐",

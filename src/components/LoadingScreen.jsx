@@ -11,7 +11,7 @@ const LoadingScreen = () => {
         <div className="loader-bar">
           <div className="loader-progress"></div>
         </div>
-        <div className="loader-subtitle">Loading Excellence...</div>
+        <div className="loader-subtitle">Accelerating Your Brand...</div>
       </div>
     </div>
   );
