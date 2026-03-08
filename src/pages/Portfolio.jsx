@@ -6,39 +6,39 @@ const Portfolio = () => {
   const filters = [
     { key: "all", label: "All Projects" },
     { key: "billboard", label: "Billboards" },
-    { key: "transit", label: "Transit" },
-    { key: "digital", label: "Digital" },
-    { key: "retail", label: "Retail" },
+    { key: "kiosk", label: "Kiosk" },
+    { key: "unipole", label: "Unipole" },
+    { key: "kiosk-divider", label: "Kiosk Divider" },
   ];
 
   const portfolioItems = [
     {
       category: "billboard",
-      title: "Snack Brand Highway Campaign",
+      title: "Gopal Namkeen Campaign",
       description: "50+ premium locations across Rajkot-Ahmedabad corridor",
-      tags: ["Billboard", "Highway"],
+      tags: ["Billboard", "Highway", "Kiosk"],
       mockup: { title: "Highway Billboard", subtitle: "FMCG Campaign" },
     },
     {
-      category: "transit",
-      title: "City-Wide Transit Campaign",
+      category: "billboard",
+      title: "Kora By Nilesh Mitesh Campaign",
       description: "Full wraps on 50+ buses across Rajkot city",
-      tags: ["Transit", "Bus Wrap"],
-      mockup: { title: "Bus Wrap", subtitle: "Beverage Brand" },
+      tags: ["Billboard"],
+      mockup: { title: "Advertisement in City", subtitle: "Fashion Brand" },
     },
     {
       category: "digital",
-      title: "Premium Digital Campaign",
+      title: "Jade Blue Fashion Campaign",
       description: "Prime city center LED screens with video content",
       tags: ["Digital", "LED"],
-      mockup: { title: "LED Display", subtitle: "Real Estate" },
+      mockup: { title: "Premium Hoardings", subtitle: "Fashion Brand" },
     },
     {
       category: "billboard",
-      title: "Multi-Location Fitness Campaign",
-      description: "Strategic placements near gyms and fitness centers",
+      title: "Radhika Jewellery Campaign",
+      description: "Strategic placements near iconic places around Rajkot City",
       tags: ["Billboard", "City Center"],
-      mockup: { title: "City Billboard", subtitle: "Fitness Brand" },
+      mockup: { title: "City wide Presence", subtitle: "Jewellery Brand" },
     },
     {
       category: "retail",
@@ -122,7 +122,7 @@ const Portfolio = () => {
         {/* Success Story */}
         <div className="success-story">
           <div className="success-badge">SUCCESS STORY</div>
-          <h3>300% Foot Traffic Increase for Leading FMCG Brand</h3>
+          <h3>300% Foot Traffic Increase</h3>
           <p>
             Strategic billboard placements across 50+ locations drove
             unprecedented market penetration and brand recall in the Saurashtra

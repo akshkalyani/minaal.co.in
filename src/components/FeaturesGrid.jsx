@@ -10,17 +10,17 @@ const FeaturesGrid = () => {
     {
       icon: "kiosk.png",
       title: "Kiosk",
-      description: "Measurable results with every campaign",
+      description: "200+ high-visibility kiosks in prime locations",
     },
     {
       icon: "bus-shelter.png",
       title: "Bus Shelter",
-      description: "From concept to live in 7-14 days",
+      description: "150+ bus shelters across Gujarat",
     },
     {
       icon: "unipole.png",
       title: "Unipole",
-      description: "From concept to live in 7-14 days",
+      description: "25+ unipole sites in high-traffic corridors",
     },
   ];
 
@@ -32,13 +32,19 @@ const FeaturesGrid = () => {
           We offer a range of advertising solutions to help businesses reach their target audience and achieve their marketing goals.
         </p>
       </div>
+
       <div className="container">
         <div className="features-grid">
           {features.map((feature, index) => (
             <div key={index} className="feature-box">
               <div className="feature-icon">
-                <img src={"minaal/" + feature.icon} alt={feature.title} height={200} />
+                <img
+                  src={"minaal/" + feature.icon}
+                  alt={feature.title}
+                  className="feature-img"
+                />
               </div>
+
               <h3>{feature.title}</h3>
               <p>{feature.description}</p>
             </div>

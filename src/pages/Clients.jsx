@@ -44,14 +44,15 @@ const Clients = () => {
     { src: "/clients/savan.png", alt: "Savan", industry: "realestate" },
     // Hospitality & Lifestyle
     { src: "/clients/cosmoplex.png", alt: "Cosmoplex", industry: "lifestyle" },
-    { src: "/clients/blue-Club.png", alt: "Blue Club", industry: "lifestyle" },
     { src: "/clients/emerald-club.png", alt: "The Emerald Club", industry: "lifestyle" },
-    { src: "/clients/jadeblue.webp", alt: "Jade Blue", industry: "lifestyle" },
-    { src: "/clients/Greenfibre.webp", alt: "Green Fibre", industry: "lifestyle" },
     // Jewellery & Fashion
     { src: "/clients/radhika-jewellers.png", alt: "Radhika Jewellers", industry: "jewellery" },
     { src: "/clients/manish-bhindi-jewels.jpg", alt: "Manish Bhindi Jewels", industry: "jewellery" },
     { src: "/clients/shilpa-lifestyle.png", alt: "Shilpa Lifestyle", industry: "jewellery" },
+    { src: "/clients/blue-Club.png", alt: "Blue Club", industry: "jewellery" },
+    { src: "/clients/jadeblue.webp", alt: "Jade Blue", industry: "jewellery" },
+    { src: "/clients/Greenfibre.webp", alt: "Green Fibre", industry: "jewellery" },
+    { src: "/clients/kora.png", alt: "Kora", industry: "jewellery" },
     // Industrial & Other
     { src: "/clients/regal-shoes.avif", alt: "Regal Shoes", industry: "industrial" },
     { src: "/clients/appollo_steel.png", alt: "Apollo Steel", industry: "industrial" },
