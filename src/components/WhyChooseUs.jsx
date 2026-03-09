@@ -40,7 +40,7 @@ const WhyChooseUs = () => {
       number: "06",
       icon: "icons/trust.png",
       title: "Trusted Partner",
-      description: "15+ years serving 200+ satisfied clients across industries",
+      description: "25+ years serving 200+ satisfied clients across industries",
     },
   ];
 

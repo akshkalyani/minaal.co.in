@@ -4,12 +4,12 @@ import CityPageTemplate from "../../components/CityPageTemplate";
 const rajkotData = {
     seo: {
         title: "Hoarding Advertising in Rajkot | Billboard Agency Saurashtra — Minaal Publicity",
-        description: "Best hoarding advertising agency in Rajkot. Prime billboard locations on 150 Ft Road, Kalawad Road, Ring Road & Gondal Road. 15+ years serving Rajkot & Saurashtra brands.",
+        description: "Best hoarding advertising agency in Rajkot. Prime billboard locations on 150 Ft Road, Kalawad Road, Ring Road & Gondal Road. 25+ years serving Rajkot & Saurashtra brands.",
         canonical: "https://www.minaal.co.in/hoarding-advertising-rajkot",
     },
     cityName: "Rajkot",
     heroHeading: "Hoarding Advertising in Rajkot — Saurashtra's Capital of Commerce",
-    heroSubheading: "Rajkot is not just Saurashtra's largest city — it's the region's economic engine. With a population of 2.5 million and some of India's highest concentrations of engineering SMEs, FMCG distributors, and retail consumers, Rajkot's outdoor advertising landscape offers unmatched access to a high-value buying audience. Minaal Publicity has been the city's most trusted hoarding partner for 15+ years.",
+    heroSubheading: "Rajkot is not just Saurashtra's largest city — it's the region's economic engine. With a population of 2.5 million and some of India's highest concentrations of engineering SMEs, FMCG distributors, and retail consumers, Rajkot's outdoor advertising landscape offers unmatched access to a high-value buying audience. Minaal Publicity has been the city's most trusted hoarding partner for 25+ years.",
     introParagraph1: "Rajkot's geography creates natural outdoor advertising corridors that no smart brand should ignore. The city's four major radial roads — 150 Ft Ring Road, Kalawad Road, Gondal Road, and Kalavad-Jamnagar Highway — each carry over 100,000 vehicles daily, passing through distinct commercial and residential zones that represent different consumer segments. Our 15 years of Rajkot-specific media placement experience means we know exactly which hoardings on which roads deliver results for which categories.",
     introParagraph2: "Beyond the major roads, Rajkot's bazaar areas — Soni Bazaar, Dhebar Road, and Kanak Road — represent some of Gujarat's most concentrated retail footfall. Our network includes prime placements adjacent to these trading hubs, capturing both wholesale buyers and end consumers at peak purchase intent moments. For brands targeting Rajkot's thriving engineering and industrial belt — Aji GIDC, Metoda, and Shapar-Veraval — we have dedicated industrial corridor placements that reach business owners and procurement decision-makers effectively.",
     whySection: {
@@ -26,7 +26,7 @@ const rajkotData = {
         { value: "2.5M+", label: "Rajkot City Population" },
         { value: "150+", label: "Prime Sites in Rajkot" },
         { value: "5,000+", label: "Engineering SMEs in Rajkot" },
-        { value: "15+", label: "Years Serving Rajkot Brands" },
+        { value: "25+", label: "Years Serving Rajkot Brands" },
     ],
     coverageAreas: [
         { name: "150 Ft Ring Road", desc: "Rajkot's widest and highest-traffic arterial — flanked by premium retail, educational institutions, and luxury residential. The city's most sought-after hoarding corridor." },

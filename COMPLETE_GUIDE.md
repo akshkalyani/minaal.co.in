@@ -319,13 +319,13 @@ Update these numbers throughout the site:
 **Hero Section Floating Stats:**
 - 500+ Active Sites
 - 200+ Happy Clients
-- 15+ Years
+- 25+ Years
 - 5M+ Daily Reach
 
 **About Page:**
 - 500+ Active Sites
 - 200+ Clients Served
-- 15+ Years Experience
+- 25+ Years Experience
 
 **Success Story:**
 - 300% Traffic Increase

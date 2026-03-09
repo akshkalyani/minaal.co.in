@@ -34,14 +34,14 @@ const MarketingAgencyGujaratPage = () => {
                         Gujarat's business landscape is uniquely entrepreneurial — from Rajkot's precision engineering clusters to Surat's diamond and textile enterprises, from Ahmedabad's startup ecosystem to Vadodara's petrochemical giants. Every category requires a different brand approach, a different media mix, and a different creative strategy. That's why Minaal Publicity has evolved beyond outdoor media buying to offer complete integrated marketing services tailored to Gujarat's business reality.
                     </p>
                     <p>
-                        We combine 15+ years of on-ground Gujarat market expertise with a full-service creative and media capability — giving our clients a single accountable partner for their entire marketing and advertising function. Whether you're a first-generation entrepreneur building your brand for the first time, or a growing SME looking to scale market share, our agency team delivers campaigns that are strategic, creative, and measurably effective.
+                        We combine 25+ years of on-ground Gujarat market expertise with a full-service creative and media capability — giving our clients a single accountable partner for their entire marketing and advertising function. Whether you're a first-generation entrepreneur building your brand for the first time, or a growing SME looking to scale market share, our agency team delivers campaigns that are strategic, creative, and measurably effective.
                     </p>
                 </div>
 
                 <div className="seo-stats-strip">
                     {[
                         { value: "200+", label: "Brands Served Across Gujarat" },
-                        { value: "15+", label: "Years in Gujarat Advertising" },
+                        { value: "25+", label: "Years in Gujarat Advertising" },
                         { value: "360°", label: "Integrated Marketing Services" },
                         { value: "24/7", label: "Campaign Monitoring & Support" },
                     ].map((s, i) => (
@@ -79,7 +79,7 @@ const MarketingAgencyGujaratPage = () => {
                         {[
                             { icon: "🏠", title: "We're From Gujarat — We Think in Gujarati", desc: "Our team understands the cultural nuances of Gujarat's markets — the importance of community trust, the role of word-of-mouth in trading communities, the distinct preferences of Saurashtra vs. North Gujarat vs. South Gujarat consumers." },
                             { icon: "📡", title: "Media Ownership + Agency Services", desc: "Unlike pure creative agencies that depend on third-party media vendors, we own our media network. This gives our clients better rates, faster execution, and seamless integration between creative and media." },
-                            { icon: "🔬", title: "Insight-Driven Campaign Planning", desc: "We base our recommendations on 15+ years of campaign performance data across Gujarat — we know which format, which corridor, and which creative approach works for which category." },
+                            { icon: "🔬", title: "Insight-Driven Campaign Planning", desc: "We base our recommendations on 25+ years of campaign performance data across Gujarat — we know which format, which corridor, and which creative approach works for which category." },
                             { icon: "💼", title: "Flexible Engagement Models", desc: "From project-based campaigns to long-term retainer partnerships, we work in the model that suits your business. SME budgets and enterprise requirements are both met with equal rigour." },
                         ].map((p, i) => (
                             <div key={i} className="seo-why-point">

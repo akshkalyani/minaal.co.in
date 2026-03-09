@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import CampaignModal from "../components/CampaignModal";
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const filters = [
     { key: "all", label: "All Projects" },
@@ -18,6 +20,7 @@ const Portfolio = () => {
       description: "50+ premium locations across Rajkot-Ahmedabad corridor",
       tags: ["Billboard", "Highway", "Kiosk"],
       mockup: { title: "Highway Billboard", subtitle: "FMCG Campaign" },
+      images: ["campaigns/gopal/gopal1.jpeg", "campaigns/gopal/gopal2.jpg", "campaigns/gopal/gopal3.jpg"],
     },
     {
       category: "billboard",
@@ -25,6 +28,7 @@ const Portfolio = () => {
       description: "Full wraps on 50+ buses across Rajkot city",
       tags: ["Billboard"],
       mockup: { title: "Advertisement in City", subtitle: "Fashion Brand" },
+      images: ["hero/1.png", "hero/3.png"],
     },
     {
       category: "digital",
@@ -32,6 +36,7 @@ const Portfolio = () => {
       description: "Prime city center LED screens with video content",
       tags: ["Digital", "LED"],
       mockup: { title: "Premium Hoardings", subtitle: "Fashion Brand" },
+      images: ["hero/5.jpg", "hero/3.png"],
     },
     {
       category: "billboard",
@@ -39,6 +44,7 @@ const Portfolio = () => {
       description: "Strategic placements near iconic places around Rajkot City",
       tags: ["Billboard", "City Center"],
       mockup: { title: "City wide Presence", subtitle: "Jewellery Brand" },
+      images: ["hero/4.jpg", "hero/6.jpg"],
     },
     {
       category: "retail",
@@ -46,6 +52,7 @@ const Portfolio = () => {
       description: "Storefront and in-store branding solution",
       tags: ["Retail", "Branding"],
       mockup: { title: "Storefront", subtitle: "Retail Chain" },
+      images: ["minaal/kiosk.png", "hero/1.png"],
     },
     {
       category: "billboard",
@@ -53,6 +60,7 @@ const Portfolio = () => {
       description: "Illuminated billboards for round-the-clock presence",
       tags: ["Billboard", "Illuminated"],
       mockup: { title: "Illuminated", subtitle: "Tea Brand" },
+      images: ["hero/2.jpg", "hero/4.jpg"],
     },
   ];
 
@@ -97,6 +105,8 @@ const Portfolio = () => {
               key={index}
               className="portfolio-item-new"
               data-category={item.category}
+              onClick={() => setSelectedItem(item)}
+              style={{ cursor: "pointer" }}
             >
               <div className="portfolio-image-new billboard-mockup-small">
                 <div className="mockup-overlay">
@@ -137,6 +147,14 @@ const Portfolio = () => {
             ))}
           </div>
         </div>
+
+        {/* Reusable Modal */}
+        <CampaignModal
+          item={selectedItem}
+          onClose={() => setSelectedItem(null)}
+          sectionLabel="CAMPAIGN IMAGES"
+        />
+
       </div>
     </section>
   );

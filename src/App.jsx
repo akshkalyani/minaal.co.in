@@ -21,6 +21,7 @@ import Services from "./pages/Services.jsx";
 import Portfolio from "./pages/Portfolio.jsx";
 import Clients from "./pages/Clients.jsx";
 import Contact from "./pages/Contact.jsx";
+import CityAdvertisingPage from "./pages/seo/CityAdvertisingPage.jsx";
 
 // SEO Service Pages (lazy loaded for performance)
 const HoardingGujaratPage = lazy(() => import("./pages/seo/HoardingGujaratPage.jsx"));
@@ -91,6 +92,10 @@ function App() {
               <Route path="/hoarding-advertising-surat" element={<SuratPage />} />
               <Route path="/hoarding-advertising-vadodara" element={<VadodaraPage />} />
               <Route path="/hoarding-advertising-mumbai" element={<MumbaiPage />} />
+
+              <Route path="/hoardings/:city" element={<CityAdvertisingPage type="hoardings" />} />
+              <Route path="/outdoor/:city" element={<CityAdvertisingPage type="outdoor" />} />
+              <Route path="/flex-banner/:city" element={<CityAdvertisingPage type="flex" />} />
 
               {/* Legal */}
               <Route path="/terms" element={<TermsAndConditions />} />
