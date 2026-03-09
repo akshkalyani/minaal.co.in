@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import "./services.css";
+import CampaignModal from "../components/CampaignModal";
 
 const Services = () => {
 
@@ -16,6 +16,7 @@ const Services = () => {
         "Illuminated & non-illuminated",
         "Flexible rental periods",
       ],
+      tags: ["Billboard", "Highway", "Illuminated"],
       images: [
         "hero/2.jpg",
         "hero/4.jpg",
@@ -34,6 +35,7 @@ const Services = () => {
         "Bus station advertising",
         "Moving billboard coverage",
       ],
+      tags: ["Transit", "Bus", "Mobile"],
       images: [
         "minaal/bus-shelter.png",
         "minaal/bus-shelter.png",
@@ -51,6 +53,7 @@ const Services = () => {
         "In-store branding",
         "POS materials",
       ],
+      tags: ["Retail", "Branding", "POS"],
       images: [
         "hero/1.png",
         "minaal/kiosk.png",
@@ -68,6 +71,7 @@ const Services = () => {
         "Time-based messaging",
         "Video advertisement support",
       ],
+      tags: ["Digital", "LED", "Video"],
       images: [
         "hero/3.png",
         "hero/5.jpg",
@@ -85,6 +89,7 @@ const Services = () => {
         "Dual visibility on both sides",
         "Budget Friendly",
       ],
+      tags: ["Kiosk", "Divider", "Budget"],
       images: [
         "hero/3.png",
         "hero/5.jpg",
@@ -94,33 +99,6 @@ const Services = () => {
   ];
 
   const [selectedService, setSelectedService] = useState(null);
-  const [isClosing, setIsClosing] = useState(false);
-
-  const closeModal = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      setSelectedService(null);
-      setIsClosing(false);
-    }, 300); // match CSS animation duration
-  };
-
-  // ESC key close
-  useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === "Escape") closeModal();
-    };
-    window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc);
-  }, []);
-
-  // Prevent background scroll
-  useEffect(() => {
-    if (selectedService) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [selectedService]);
 
   return (
     <section className="page">
@@ -138,11 +116,12 @@ const Services = () => {
             <div
               key={index}
               className={`service-card-new ${service.featured ? "featured-service" : ""}`}
+              onClick={() => setSelectedService(service)}
+              style={{ cursor: "pointer" }}
             >
               {service.featured && (
                 <div className="popular-badge">MOST POPULAR</div>
               )}
-              {/* <div key={index} className="service-card-new"> */}
               <div className="service-image billboard-icon">
                 <img src={service.icon} height={100} alt="" />
               </div>
@@ -153,7 +132,10 @@ const Services = () => {
 
                 <button
                   className="service-btn-new"
-                  onClick={() => setSelectedService(service)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedService(service);
+                  }}
                 >
                   View Images
                 </button>
@@ -162,44 +144,12 @@ const Services = () => {
           ))}
         </div>
 
-        {/* MODAL */}
-        {selectedService && (
-          <div className={`modal-overlay ${isClosing ? "fade-out" : "fade-in"}`}>
-
-            {/* Backdrop */}
-            <div className="modal-backdrop" onClick={closeModal}></div>
-
-            {/* Modal Card */}
-            <div className={`modal-card ${isClosing ? "scale-out" : "scale-in"}`}>
-
-              {/* Header */}
-              <div className="modal-header">
-                <div>
-                  <h3 className="modal-title">{selectedService.title}</h3>
-                  <p className="modal-subtitle">{selectedService.description}</p>
-                </div>
-
-                <button className="modal-close" onClick={closeModal}>
-                  ✕
-                </button>
-              </div>
-
-              {/* Scrollable Body */}
-              <div className="modal-body">
-                <h4 className="modal-section-label">RECENT EXECUTIONS</h4>
-
-                <div className="modal-gallery">
-                  {selectedService.images.map((img, i) => (
-                    <div key={i} className="modal-image-wrapper">
-                      <img src={img} alt="" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-            </div>
-          </div>
-        )}
+        {/* Reusable Modal */}
+        <CampaignModal
+          item={selectedService}
+          onClose={() => setSelectedService(null)}
+          sectionLabel="RECENT EXECUTIONS"
+        />
 
       </div>
     </section>

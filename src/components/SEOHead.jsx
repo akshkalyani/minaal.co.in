@@ -1,36 +1,21 @@
 import { useEffect } from "react";
 
-/**
- * SEOHead — sets page title + meta description dynamically without react-helmet.
- * Call at the top of any page component.
- */
-const SEOHead = ({ title, description, canonical }) => {
+const SEOHead = ({ title, description, canonical, image }) => {
     useEffect(() => {
-        // Title
+
         document.title = title;
 
-        // Description
-        let metaDesc = document.querySelector('meta[name="description"]');
-        if (!metaDesc) {
-            metaDesc = document.createElement("meta");
-            metaDesc.setAttribute("name", "description");
-            document.head.appendChild(metaDesc);
-        }
-        metaDesc.setAttribute("content", description);
-
-        // Canonical
-        let linkCanonical = document.querySelector('link[rel="canonical"]');
-        if (canonical) {
-            if (!linkCanonical) {
-                linkCanonical = document.createElement("link");
-                linkCanonical.setAttribute("rel", "canonical");
-                document.head.appendChild(linkCanonical);
+        const setMeta = (name, content) => {
+            let tag = document.querySelector(`meta[name="${name}"]`);
+            if (!tag) {
+                tag = document.createElement("meta");
+                tag.setAttribute("name", name);
+                document.head.appendChild(tag);
             }
-            linkCanonical.setAttribute("href", canonical);
-        }
+            tag.setAttribute("content", content);
+        };
 
-        // OG tags
-        const setOG = (property, content) => {
+        const setProperty = (property, content) => {
             let tag = document.querySelector(`meta[property="${property}"]`);
             if (!tag) {
                 tag = document.createElement("meta");
@@ -39,15 +24,80 @@ const SEOHead = ({ title, description, canonical }) => {
             }
             tag.setAttribute("content", content);
         };
-        setOG("og:title", title);
-        setOG("og:description", description);
-        if (canonical) setOG("og:url", canonical);
 
-        return () => {
-            // Reset to default on unmount
-            document.title = "Minaal Publicity - Pioneers in Out of Home Advertising | Rajkot & Saurashtra";
+        // description
+        setMeta("description", description);
+
+        // robots
+        setMeta("robots", "index, follow, max-image-preview:large");
+
+        // geo targeting
+        setMeta("geo.region", "IN-GJ");
+        setMeta("geo.placename", "Rajkot");
+        setMeta("geo.position", "22.3039;70.8022");
+        setMeta("ICBM", "22.3039, 70.8022");
+
+        // canonical
+        if (canonical) {
+            let link = document.querySelector('link[rel="canonical"]');
+            if (!link) {
+                link = document.createElement("link");
+                link.rel = "canonical";
+                document.head.appendChild(link);
+            }
+            link.href = canonical;
+        }
+
+        // OpenGraph
+        setProperty("og:title", title);
+        setProperty("og:description", description);
+        setProperty("og:type", "website");
+        if (canonical) setProperty("og:url", canonical);
+        if (image) setProperty("og:image", image);
+
+        // twitter
+        setMeta("twitter:card", "summary_large_image");
+        setMeta("twitter:title", title);
+        setMeta("twitter:description", description);
+
+        // structured data (VERY IMPORTANT)
+        const ldJson = {
+            "@context": "https://schema.org",
+            "@type": "AdvertisingAgency",
+            "name": "Minaal Publicity",
+            "url": "https://www.minaal.co.in",
+            "logo": "https://www.minaal.co.in/logo.png",
+            "telephone": "+91-9825076797",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Rajkot",
+                "addressRegion": "Gujarat",
+                "addressCountry": "India"
+            },
+            "areaServed": [
+                "Rajkot",
+                "Ahmedabad",
+                "Surat",
+                "Vadodara",
+                "Jamnagar",
+                "Bhavnagar"
+            ],
+            "sameAs": [
+                "https://www.instagram.com/minaalpublicity"
+            ]
         };
-    }, [title, description, canonical]);
+
+        let script = document.querySelector('#schema-org');
+        if (!script) {
+            script = document.createElement("script");
+            script.type = "application/ld+json";
+            script.id = "schema-org";
+            document.head.appendChild(script);
+        }
+
+        script.innerHTML = JSON.stringify(ldJson);
+
+    }, [title, description, canonical, image]);
 
     return null;
 };

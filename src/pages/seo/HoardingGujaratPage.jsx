@@ -36,7 +36,7 @@ const HoardingGujaratPage = () => {
                         Gujarat is India's most commercially vibrant state — home to a $300 billion economy, the world's diamond capital in Surat, and a rapidly urbanizing population of 70+ million. Every day, millions of Gujaratis commute across busy state highways, city ring roads, and commercial corridors. Hoarding advertising remains the single most cost-effective way to intercept this massive audience at scale — with zero skip rates, no ad blockers, and 24/7 visibility.
                     </p>
                     <p>
-                        At Minaal Publicity, we've spent 15+ years building one of Saurashtra and Gujarat's most strategic hoarding networks. Our placements aren't random — they're chosen based on daily traffic counts, demographic footfall data, and proximity to high-conversion zones like retail markets, industrial estates, and residential launch sites. Whether you're a national brand entering Gujarat or a local business scaling up, our network ensures your message lands in front of the right eyes, every day.
+                        At Minaal Publicity, we've spent 25+ years building one of Saurashtra and Gujarat's most strategic hoarding networks. Our placements aren't random — they're chosen based on daily traffic counts, demographic footfall data, and proximity to high-conversion zones like retail markets, industrial estates, and residential launch sites. Whether you're a national brand entering Gujarat or a local business scaling up, our network ensures your message lands in front of the right eyes, every day.
                     </p>
                 </div>
 
@@ -44,7 +44,7 @@ const HoardingGujaratPage = () => {
                 <div className="seo-stats-strip">
                     {[
                         { value: "500+", label: "Hoarding Sites Across Gujarat" },
-                        { value: "15+", label: "Years of OOH Experience" },
+                        { value: "25+", label: "Years of OOH Experience" },
                         { value: "5M+", label: "Daily Impressions" },
                         { value: "200+", label: "Brand Campaigns Executed" },
                     ].map((s, i) => (
