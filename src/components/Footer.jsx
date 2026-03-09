@@ -22,10 +22,10 @@ const Footer = () => {
                 <img src="icons/Facebook.png" alt="Facebook" width={20} height={20} />
               </a>
               <a href="https://www.instagram.com/minaal.ad/" title="Instagram">
-                <img src="icons/instagram.png" alt="Instagram" width={20} height={20} />
+                <img src="icons/Instagram.png" alt="Instagram" width={20} height={20} />
               </a>
               <a href="https://www.linkedin.com/company/minaal-advertising/" title="LinkedIn">
-                <img src="icons/linkedin.png" alt="LinkedIn" width={20} height={20} />
+                <img src="icons/Linkedin.png" alt="LinkedIn" width={20} height={20} />
               </a>
               <a href="https://x.com/minaal_advertising" title="X">
                 <img src="icons/X.png" alt="X" width={20} height={20} />
