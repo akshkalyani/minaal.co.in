@@ -59,16 +59,19 @@ const Footer = () => {
                 <Link to="/services">Billboard Advertising</Link>
               </li>
               <li>
+                <Link to="/services">Unipole Advertising</Link>
+              </li>
+              <li>
+                <Link to="/services">Kiosks</Link>
+              </li>
+              <li>
+                <Link to="/services">Divider Kiosks</Link>
+              </li>
+              <li>
                 <Link to="/services">Transit Advertising</Link>
               </li>
               <li>
-                <Link to="/services">Digital LED Displays</Link>
-              </li>
-              <li>
-                <Link to="/services">Retail Branding</Link>
-              </li>
-              <li>
-                <Link to="/services">Event Branding</Link>
+                <Link to="/it">IT Services</Link>
               </li>
             </ul>
           </div>
