@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   Navigate,
+  Outlet,
 } from "react-router-dom";
 import "./App.css";
 
@@ -22,6 +23,9 @@ import Portfolio from "./pages/Portfolio.jsx";
 import Clients from "./pages/Clients.jsx";
 import Contact from "./pages/Contact.jsx";
 import CityAdvertisingPage from "./pages/seo/CityAdvertisingPage.jsx";
+
+// IT Mini-Site (lazy loaded, fully standalone)
+const ITHome = lazy(() => import("./pages/IT/ITHome.jsx"));
 
 // SEO Service Pages (lazy loaded for performance)
 const HoardingGujaratPage = lazy(() => import("./pages/seo/HoardingGujaratPage.jsx"));
@@ -47,6 +51,20 @@ const SEOPageLoader = () => (
   </div>
 );
 
+// Layout wrapper for the main advertising site (Navbar + Footer + floats)
+const MainLayout = ({ isLoading }) => (
+  <div className="App">
+    {isLoading && <LoadingScreen />}
+    <Navbar />
+    <WhatsAppFloat />
+    <BackToTop />
+    <main id="mainContent">
+      <Outlet />
+    </main>
+    <Footer />
+  </div>
+);
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -60,56 +78,49 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Router>
-        {isLoading && <LoadingScreen />}
+    <Router>
+      <Suspense fallback={<SEOPageLoader />}>
+        <Routes>
+          {/* ── IT Mini-Site (standalone, no main layout) ── */}
+          <Route path="/it" element={<ITHome />} />
 
-        <Navbar />
-        <WhatsAppFloat />
-        <BackToTop />
+          {/* ── Main Advertising Site (with Navbar + Footer) ── */}
+          <Route element={<MainLayout isLoading={isLoading} />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Navigate to="/" replace />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/clients" element={<Clients />} />
+            <Route path="/contact" element={<Contact />} />
 
-        <main id="mainContent">
-          <Suspense fallback={<SEOPageLoader />}>
-            <Routes>
-              {/* Core Pages */}
-              <Route path="/" element={<Home />} />
-              <Route path="/home" element={<Navigate to="/" replace />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/portfolio" element={<Portfolio />} />
-              <Route path="/clients" element={<Clients />} />
-              <Route path="/contact" element={<Contact />} />
+            {/* SEO Service Pages */}
+            <Route path="/hoarding-advertising-gujarat" element={<HoardingGujaratPage />} />
+            <Route path="/outdoor-advertising-gujarat" element={<OutdoorAdvertisingGujaratPage />} />
+            <Route path="/ooh-advertising-india" element={<OohIndiaPage />} />
+            <Route path="/marketing-agency-gujarat" element={<MarketingAgencyGujaratPage />} />
 
-              {/* SEO Service Pages */}
-              <Route path="/hoarding-advertising-gujarat" element={<HoardingGujaratPage />} />
-              <Route path="/outdoor-advertising-gujarat" element={<OutdoorAdvertisingGujaratPage />} />
-              <Route path="/ooh-advertising-india" element={<OohIndiaPage />} />
-              <Route path="/marketing-agency-gujarat" element={<MarketingAgencyGujaratPage />} />
+            {/* SEO City Pages */}
+            <Route path="/hoarding-advertising-rajkot" element={<RajkotPage />} />
+            <Route path="/hoarding-advertising-ahmedabad" element={<AhmedabadPage />} />
+            <Route path="/hoarding-advertising-surat" element={<SuratPage />} />
+            <Route path="/hoarding-advertising-vadodara" element={<VadodaraPage />} />
+            <Route path="/hoarding-advertising-mumbai" element={<MumbaiPage />} />
 
-              {/* SEO City Pages */}
-              <Route path="/hoarding-advertising-rajkot" element={<RajkotPage />} />
-              <Route path="/hoarding-advertising-ahmedabad" element={<AhmedabadPage />} />
-              <Route path="/hoarding-advertising-surat" element={<SuratPage />} />
-              <Route path="/hoarding-advertising-vadodara" element={<VadodaraPage />} />
-              <Route path="/hoarding-advertising-mumbai" element={<MumbaiPage />} />
+            <Route path="/hoardings/:city" element={<CityAdvertisingPage type="hoardings" />} />
+            <Route path="/outdoor/:city" element={<CityAdvertisingPage type="outdoor" />} />
+            <Route path="/flex-banner/:city" element={<CityAdvertisingPage type="flex" />} />
 
-              <Route path="/hoardings/:city" element={<CityAdvertisingPage type="hoardings" />} />
-              <Route path="/outdoor/:city" element={<CityAdvertisingPage type="outdoor" />} />
-              <Route path="/flex-banner/:city" element={<CityAdvertisingPage type="flex" />} />
+            {/* Legal */}
+            <Route path="/terms" element={<TermsAndConditions />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
-              {/* Legal */}
-              <Route path="/terms" element={<TermsAndConditions />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-
-              {/* Catch-all */}
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </Suspense>
-        </main>
-
-        <Footer />
-      </Router>
-    </div>
+            {/* Catch-all */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </Router>
   );
 }
 
