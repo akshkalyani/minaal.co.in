@@ -104,6 +104,15 @@ const Navbar = () => {
           >
             Contact
           </Link>
+          <Link
+            to="/it"
+            className="nav-it-chip"
+            onClick={closeMobileMenu}
+            title="Minaal IT Services"
+          >
+            <span className="nav-it-dot" />
+            IT Services
+          </Link>
         </div>
 
         {/* Dark Mode Toggle */}
