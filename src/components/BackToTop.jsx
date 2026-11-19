@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useSmoothScroll } from "./scroll";
 
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const scroller = useSmoothScroll();
 
+  // Ride the scroll engine's per-frame updates instead of a separate scroll listener
   useEffect(() => {
-    const handleScroll = () => {
-      setIsVisible(window.scrollY > 300);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    if (!scroller) return undefined;
+    return scroller.subscribe(({ scroll }) => setIsVisible(scroll > 300));
+  }, [scroller]);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    if (scroller) scroller.scrollTo(0);
+    else window.scrollTo({ top: 0 });
   };
 
   return (

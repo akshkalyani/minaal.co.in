@@ -1,153 +1,116 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { ArrowUpRight, Button, Container, Eyebrow } from "./ui";
+import { CONTACT, NAV_LINKS, SHOW_IT_SERVICES } from "../data/site";
+
+export const Brand = ({ showMark = true }) => (
+  <Link to="/" className="mn-brand" aria-label="Minaal Publicity home">
+    {showMark && <img src="/logo.png" alt="" className="mn-brand__mark" />}
+    <span className="mn-brand__text">
+      <span className="mn-brand__name">MINAAL</span>
+      <span className="mn-brand__sub">Publicity</span>
+    </span>
+  </Link>
+);
+
+/** Full-screen menu shown below the desktop breakpoint. */
+const MobileMenu = ({ id }) => (
+  <div className="mn-menu" id={id}>
+    <Container className="mn-menu__links">
+      <Eyebrow tone="accent">Explore Minaal</Eyebrow>
+      <ol>
+        {NAV_LINKS.map((link, index) => (
+          <li key={link.to}>
+            <NavLink to={link.to} end className="mn-menu__link">
+              <span className="mn-menu__num">{String(index + 1).padStart(2, "0")}</span>
+              <span className="mn-menu__label">{link.label}</span>
+              <ArrowUpRight size={22} />
+            </NavLink>
+          </li>
+        ))}
+      </ol>
+    </Container>
+    <div className="mn-menu__contact">
+      <Container>
+        <Eyebrow tone="accent">Let’s build your next campaign</Eyebrow>
+        <Button to="/contact" block>
+          Get a free quote
+        </Button>
+        <a href={CONTACT.phoneHref} className="mn-menu__phone">
+          {CONTACT.phone}
+        </a>
+        <a href={`mailto:${CONTACT.emails[0]}`} className="mn-menu__email">
+          {CONTACT.emails[0]}
+        </a>
+        {SHOW_IT_SERVICES && (
+          <Link to="/it" className="mn-menu__it">
+            IT Services <ArrowUpRight size={14} />
+          </Link>
+        )}
+      </Container>
+    </div>
+    <Container className="mn-menu__region">Rajkot / Saurashtra / Gujarat</Container>
+  </div>
+);
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Read persisted preference on first render
-    return localStorage.getItem("theme") === "dark";
-  });
-  const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
+  const { pathname } = useLocation();
 
-  // Apply / remove dark-mode class on body whenever state changes
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add("dark-mode");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.body.classList.remove("dark-mode");
-      localStorage.setItem("theme", "light");
-    }
-  }, [isDarkMode]);
+  // Close the menu whenever the route changes
+  useEffect(() => setIsOpen(false), [pathname]);
 
-  // Sync on mount in case the class was set by App.jsx before React hydrated
+  // Stop the page behind the full-screen menu from scrolling
   useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    if (saved === "dark") {
-      document.body.classList.add("dark-mode");
-      setIsDarkMode(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    document.body.classList.toggle("mn-menu-open", isOpen);
+    return () => {
+      document.body.style.overflow = "";
+      document.body.classList.remove("mn-menu-open");
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
-
-  const isActive = (path) => {
-    if (path === "/" || path === "/home") {
-      return location.pathname === "/" || location.pathname === "/home";
-    }
-    return location.pathname === path;
-  };
+  }, [isOpen]);
 
   return (
-    <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
-      <div className="nav-container">
-        <div className="nav-logo">
-          <img src="logo.png" alt="Minaal" />
-          <span>MINAAL PUBLICITY</span>
-        </div>
+    <nav className={`mn-nav ${isOpen ? "is-open" : ""}`} aria-label="Main">
+      <Container className="mn-nav__inner">
+        <Brand />
 
-        <div className={`nav-menu ${isMobileMenuOpen ? "active" : ""}`}>
-          <Link
-            to="/"
-            className={`nav-link ${isActive("/") ? "active" : ""}`}
-            onClick={closeMobileMenu}
-          >
-            Home
-          </Link>
-          <Link
-            to="/about"
-            className={`nav-link ${isActive("/about") ? "active" : ""}`}
-            onClick={closeMobileMenu}
-          >
-            About
-          </Link>
-          <Link
-            to="/services"
-            className={`nav-link ${isActive("/services") ? "active" : ""}`}
-            onClick={closeMobileMenu}
-          >
-            Services
-          </Link>
-          <Link
-            to="/portfolio"
-            className={`nav-link ${isActive("/portfolio") ? "active" : ""}`}
-            onClick={closeMobileMenu}
-          >
-            Portfolio
-          </Link>
-          <Link
-            to="/clients"
-            className={`nav-link ${isActive("/clients") ? "active" : ""}`}
-            onClick={closeMobileMenu}
-          >
-            Clients
-          </Link>
-          <Link
-            to="/contact"
-            className={`nav-link ${isActive("/contact") ? "active" : ""}`}
-            onClick={closeMobileMenu}
-          >
-            Contact
-          </Link>
-          <Link
-            to="/it"
-            className="nav-it-chip"
-            onClick={closeMobileMenu}
-            title="Minaal IT Services"
-          >
-            <span className="nav-it-dot" />
-            IT Services
-          </Link>
-        </div>
-
-        {/* Dark Mode Toggle */}
-        <button
-          className="theme-toggle"
-          onClick={() => setIsDarkMode((prev) => !prev)}
-          aria-label={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-          title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-        >
-          {isDarkMode ? (
-            /* Sun icon */
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-              <path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.166a.75.75 0 0 0-1.06-1.06l-1.592 1.59a.75.75 0 1 0 1.061 1.061l1.591-1.59ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75ZM17.834 18.894a.75.75 0 0 0 1.06-1.06l-1.59-1.592a.75.75 0 1 0-1.061 1.061l1.59 1.591ZM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.758 17.303a.75.75 0 0 0-1.061-1.06l-1.591 1.59a.75.75 0 0 0 1.06 1.061l1.592-1.591ZM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12ZM6.697 7.757a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 0 0-1.061 1.06l1.59 1.592Z" />
-            </svg>
-          ) : (
-            /* Moon icon */
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-              <path fillRule="evenodd" d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z" clipRule="evenodd" />
-            </svg>
+        <div className="mn-nav__menu">
+          <ul className="mn-nav__links">
+            {NAV_LINKS.map((link) => (
+              <li key={link.to}>
+                <NavLink to={link.to} end className="mn-nav__link">
+                  {link.label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+          {SHOW_IT_SERVICES && (
+            <Link to="/it" className="mn-nav__it" title="Minaal IT Services">
+              IT Services <ArrowUpRight size={12} />
+            </Link>
           )}
-        </button>
-
-        <Link to="/contact" className="cta-nav-btn">
-          Get Free Quote
-        </Link>
+          <Button to="/contact" className="mn-nav__cta">
+            Get free quote
+          </Button>
+        </div>
 
         <button
-          className={`nav-toggle ${isMobileMenuOpen ? "active" : ""}`}
-          onClick={toggleMobileMenu}
+          type="button"
+          className="mn-nav__toggle"
+          aria-expanded={isOpen}
+          aria-controls="mn-mobile-menu"
+          onClick={() => setIsOpen((open) => !open)}
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span className="mn-nav__toggle-label">{isOpen ? "Close" : "Menu"}</span>
+          <span className="mn-nav__toggle-icon" aria-hidden="true">
+            <span />
+            <span />
+          </span>
         </button>
-      </div>
+      </Container>
+
+      {isOpen && <MobileMenu id="mn-mobile-menu" />}
     </nav>
   );
 };

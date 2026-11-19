@@ -1,158 +1,156 @@
 import React, { useState } from "react";
-import "./services.css";
 import CampaignModal from "../components/CampaignModal";
+import { ArrowRight, Button, Eyebrow, Section } from "../components/ui";
+import {
+  CTASection,
+  FeatureList,
+  FeatureSplit,
+  PageHero,
+  ServiceCard,
+} from "../components/sections";
+import { FEATURED_SERVICE, PROCESS_STEPS, SERVICES } from "../data/site";
+import { useIsMobile } from "../hooks/useMediaQuery";
 
-const Services = () => {
+const DesktopServices = ({ onSelect }) => (
+  <>
+    <PageHero
+      title={
+        <>
+          The right medium.
+          <br />
+          Exceptional impact.
+        </>
+      }
+      lead="Comprehensive outdoor advertising solutions."
+    />
 
-  const services = [
-    {
-      icon: "minaal/hoarding.png",
-      title: "Billboard Advertising",
-      description:
-        "Large-format displays in premium locations across highways and city centers for maximum brand visibility.",
-      features: [
-        "Highway corridor placements",
-        "City center prime spots",
-        "Illuminated & non-illuminated",
-        "Flexible rental periods",
-      ],
-      tags: ["Billboard", "Highway", "Illuminated"],
-      images: [
-        "hero/2.jpg",
-        "hero/4.jpg",
-        "hero/6.jpg",
-      ],
-      featured: false,
-    },
-    {
-      icon: "minaal/bus-shelter.png",
-      title: "Transit Advertising",
-      description:
-        "Mobile billboards on buses and public transport for dynamic city-wide exposure.",
-      features: [
-        "Full bus wraps & panels",
-        "Auto-rickshaw branding",
-        "Bus station advertising",
-        "Moving billboard coverage",
-      ],
-      tags: ["Transit", "Bus", "Mobile"],
-      images: [
-        "minaal/bus-shelter.png",
-        "minaal/bus-shelter.png",
-      ],
-      featured: false,
-    },
-    {
-      icon: "minaal/kiosk.png",
-      title: "Retail Branding",
-      description:
-        "Point-of-sale displays and retail environment branding to capture customer attention.",
-      features: [
-        "Storefront signage",
-        "Window displays",
-        "In-store branding",
-        "POS materials",
-      ],
-      tags: ["Retail", "Branding", "POS"],
-      images: [
-        "hero/1.png",
-        "minaal/kiosk.png",
-      ],
-      featured: false,
-    },
-    {
-      icon: "minaal/unipole.png",
-      title: "Digital LED Displays",
-      description:
-        "Modern LED screens with dynamic content and real-time campaign flexibility.",
-      features: [
-        "Full-color LED screens",
-        "Dynamic content rotation",
-        "Time-based messaging",
-        "Video advertisement support",
-      ],
-      tags: ["Digital", "LED", "Video"],
-      images: [
-        "hero/3.png",
-        "hero/5.jpg",
-      ],
-      featured: true,
-    },
-    {
-      icon: "minaal/divider-kiosk.png",
-      title: "Divider Kiosks",
-      description:
-        "Modern Kiosks with dynamic content and straight to the eye visibility",
-      features: [
-        "Multiple Quantity",
-        "Dynamic content rotation",
-        "Dual visibility on both sides",
-        "Budget Friendly",
-      ],
-      tags: ["Kiosk", "Divider", "Budget"],
-      images: [
-        "hero/3.png",
-        "hero/5.jpg",
-      ],
-      featured: true,
-    },
-  ];
+    <Section spacing="lg">
+      <Eyebrow className="mn-services__label">
+        Media that works where your audience lives
+      </Eyebrow>
+      <FeatureSplit
+        image={FEATURED_SERVICE.image}
+        imageAlt="Illuminated billboard at night"
+        eyebrow={FEATURED_SERVICE.eyebrow}
+        title={FEATURED_SERVICE.title}
+        text={FEATURED_SERVICE.description}
+        meta={FEATURED_SERVICE.highlight}
+        headingLevel="h2"
+        action={
+          <Button variant="link" onClick={() => onSelect(FEATURED_SERVICE)}>
+            Explore billboard media
+          </Button>
+        }
+      />
+      <div className="mn-grid mn-grid--2 mn-services__grid">
+        {SERVICES.map((service) => (
+          <ServiceCard
+            key={service.title}
+            {...service}
+            onAction={() => onSelect(service)}
+          />
+        ))}
+      </div>
+    </Section>
 
-  const [selectedService, setSelectedService] = useState(null);
+    <Section tone="raised" spacing="lg">
+      <div className="mn-aside-layout">
+        <div>
+          <Eyebrow>One partner. Every detail.</Eyebrow>
+          <h2 className="mn-heading mn-heading--lg">
+            From concept
+            <br />
+            to installation.
+          </h2>
+          <p className="mn-aside-layout__lead">We handle everything.</p>
+        </div>
+        <FeatureList
+          items={PROCESS_STEPS}
+          columns={2}
+          textKey="short"
+          className="mn-features--borderless"
+        />
+      </div>
+    </Section>
+
+    <CTASection />
+  </>
+);
+
+/* Phone composition — Reference/Minaal mobile/Services.png */
+const MobileServices = ({ onSelect }) => {
+  const cards = [FEATURED_SERVICE, ...SERVICES.filter((s) => s.mobileCard)];
+  const rows = SERVICES.filter((s) => !s.mobileCard);
 
   return (
-    <section className="page">
-      <div className="container">
-        <div className="page-header-new">
-          <h2 className="page-title-new">Our Services</h2>
-          <div className="title-underline-new"></div>
-          <p className="page-subtitle-new">
-            Comprehensive outdoor advertising solutions
-          </p>
-        </div>
+    <>
+      <PageHero
+        title={
+          <>
+            Find your
+            <br />
+            outdoor advantage.
+          </>
+        }
+        lead="The right format. The right location."
+      />
 
-        <div className="services-grid-new">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className={`service-card-new ${service.featured ? "featured-service" : ""}`}
-              onClick={() => setSelectedService(service)}
-              style={{ cursor: "pointer" }}
-            >
-              {service.featured && (
-                <div className="popular-badge">MOST POPULAR</div>
-              )}
-              <div className="service-image billboard-icon">
-                <img src={service.icon} height={100} alt="" />
-              </div>
-
-              <div className="service-content-new">
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-
-                <button
-                  className="service-btn-new"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedService(service);
-                  }}
-                >
-                  View Images
-                </button>
-              </div>
-            </div>
+      <Section tone="deep" spacing="sm" className="mn-m-services">
+        <div className="mn-m-stack">
+          {cards.map((service) => (
+            <ServiceCard
+              key={service.title}
+              layout="stacked"
+              image={service.image}
+              title={service.mobileTitle || service.title}
+              description={service.mobileText}
+              onAction={() => onSelect(service)}
+            />
           ))}
         </div>
-
-        {/* Reusable Modal */}
-        <CampaignModal
-          item={selectedService}
-          onClose={() => setSelectedService(null)}
-          sectionLabel="RECENT EXECUTIONS"
+        <FeatureList
+          items={rows.map((service) => ({
+            ...service,
+            text: service.mobileText,
+          }))}
+          variant="rows"
+          start={cards.length + 1}
+          onItemClick={onSelect}
+          className="mn-m-services__rows"
         />
+      </Section>
 
-      </div>
-    </section>
+      <Section tone="raised" spacing="md">
+        <h2 className="mn-heading mn-heading--lg">
+          One partner.
+          <br />
+          Every step covered.
+        </h2>
+        <p className="mn-m-flow">
+          Planning <ArrowRight size={14} /> Design <ArrowRight size={14} />{" "}
+          Installation
+        </p>
+      </Section>
+
+      <CTASection />
+    </>
+  );
+};
+
+const Services = () => {
+  const isMobile = useIsMobile();
+  const [selectedService, setSelectedService] = useState(null);
+  const Layout = isMobile ? MobileServices : DesktopServices;
+
+  return (
+    <>
+      <Layout onSelect={setSelectedService} />
+      <CampaignModal
+        item={selectedService}
+        onClose={() => setSelectedService(null)}
+        sectionLabel="RECENT EXECUTIONS"
+      />
+    </>
   );
 };
 

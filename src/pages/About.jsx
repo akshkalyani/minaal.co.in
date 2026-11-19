@@ -1,139 +1,187 @@
 import React from "react";
+import { Container, Eyebrow, Section, SectionHeader } from "../components/ui";
+import {
+  CTASection,
+  FeatureList,
+  PageHero,
+  StatsBar,
+} from "../components/sections";
+import { ABOUT_STATS, PROCESS_STEPS } from "../data/site";
+import { useIsMobile } from "../hooks/useMediaQuery";
+import { ParallaxImage } from "../components/scroll";
 
-const About = () => {
-  const stats = [
-    { value: "50000+ sq. ft.", label: "Active Display" },
-    { value: "500+", label: "Clients Served" },
-    { value: "25+", label: "Years Experience" },
-  ];
+const PILLARS = [
+  {
+    eyebrow: "01 / Our mission",
+    mobileEyebrow: "Our mission",
+    title: (
+      <>
+        Outdoor spaces.
+        <br />
+        Powerful brand stories.
+      </>
+    ),
+    text: "To transform outdoor spaces into powerful brand storytelling platforms that deliver measurable results and exceptional ROI for our clients.",
+    mobileText: "Turn outdoor spaces into powerful brand stories.",
+  },
+  {
+    eyebrow: "02 / Our vision",
+    mobileEyebrow: "Our vision",
+    title: (
+      <>
+        A trusted partner.
+        <br />A higher standard.
+      </>
+    ),
+    text: "To be Saurashtra’s most trusted and innovative OOH advertising partner, setting industry standards for quality, service, and creative excellence.",
+    mobileText: "Be Saurashtra’s trusted, innovative outdoor media partner.",
+  },
+];
 
-  const processSteps = [
-    {
-      number: "01",
-      icon: "📞",
-      title: "Consultation",
-      description:
-        "We understand your brand, goals, target audience, and budget to create a tailored strategy.",
-    },
-    {
-      number: "02",
-      icon: "📍",
-      title: "Site Selection",
-      description:
-        "Strategic location identification based on traffic data, demographics, and campaign objectives.",
-    },
-    {
-      number: "03",
-      icon: "🎨",
-      title: "Creative Design",
-      description:
-        "Our team creates compelling visuals optimized for outdoor viewing and brand impact.",
-    },
-    {
-      number: "04",
-      icon: "🚀",
-      title: "Launch & Monitor",
-      description:
-        "Professional installation, ongoing maintenance, and campaign performance monitoring.",
-    },
-  ];
+const HERO_TITLE = (
+  <>
+    Built on trust.
+    <br />
+    Made for impact.
+  </>
+);
 
-  return (
-    <section className="page">
-      <div className="container">
-        <div className="page-header-new">
-          <h2 className="page-title-new">About Minaal Publicity</h2>
-          <div className="title-underline-new"></div>
-          <p className="page-subtitle-new">
-            Pioneers in outdoor advertising since 1999
+const DesktopAbout = () => (
+  <>
+    <PageHero
+      title={HERO_TITLE}
+      lead="Pioneers in outdoor advertising since 1999."
+    />
+
+    <Section spacing="lg">
+      <div className="mn-story">
+        <div className="mn-story__text">
+          <Eyebrow>Our story</Eyebrow>
+          <h2 className="mn-heading mn-heading--md">
+            Accelerating brands since 1999.
+          </h2>
+          <p>
+            Minaal Publicity has established itself as Saurashtra’s premier
+            outdoor advertising agency. With over 25 years of expertise, we’ve
+            helped hundreds of brands achieve unprecedented visibility and
+            market dominance through strategic billboard placements and
+            innovative OOH solutions.
+          </p>
+          <p>
+            Our success is built on three pillars: strategic site selection,
+            creative excellence, and measurable results. From local startups to
+            national brands, we’ve been the driving force behind countless
+            successful campaigns across Rajkot and the entire Saurashtra region.
           </p>
         </div>
-
-        <div className="about-content-new">
-          <div className="about-grid-new">
-            <div className="about-text-new">
-              <h3>Accelerating Brands Since 1999</h3>
-              <p>
-                Minaal Publicity has established itself as Saurashtra's premier
-                outdoor advertising agency. With over 25 years of expertise,
-                we've helped hundreds of brands achieve unprecedented visibility
-                and market dominance through strategic billboard placements and
-                innovative OOH solutions.
-              </p>
-              <p>
-                Our success is built on three pillars: strategic site selection,
-                creative excellence, and measurable results. From local startups
-                to national brands, we've been the driving force behind
-                countless successful campaigns across Rajkot and the entire
-                Saurashtra region.
-              </p>
-
-              <div className="stats-mini">
-                {stats.map((stat, index) => (
-                  <div key={index} className="stat-mini">
-                    <div className="stat-mini-num">{stat.value}</div>
-                    <div className="stat-mini-label">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="about-visual">
-              <div className="about-image-card">
-                <div className="about-placeholder">
-                  <img src="/minaal/minaal-hoarding.png" alt="Minaal Publicity" width={100} height={100} />
-                  <div className="placeholder-icon-new">
-                  </div>
-                  <p>Minaal Publicity Headquarters</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Mission Vision */}
-          <div className="mission-vision-new">
-            <div className="mv-card-new">
-              <div className="mv-icon-new">🎯</div>
-              <h3>Our Mission</h3>
-              <p>
-                To transform outdoor spaces into powerful brand storytelling
-                platforms that deliver measurable results and exceptional ROI
-                for our clients.
-              </p>
-            </div>
-            <div className="mv-card-new">
-              <div className="mv-icon-new">🔭</div>
-              <h3>Our Vision</h3>
-              <p>
-                To be Saurashtra's most trusted and innovative OOH advertising
-                partner, setting industry standards for quality, service, and
-                creative excellence.
-              </p>
-            </div>
-          </div>
-
-          {/* Process */}
-          <div className="process-section-new">
-            <h3 className="process-title-new">Our Process</h3>
-            <div className="process-steps">
-              {processSteps.map((step, index) => (
-                <React.Fragment key={index}>
-                  <div className="process-card">
-                    <div className="process-num">{step.number}</div>
-                    <div className="process-icon-new">{step.icon}</div>
-                    <h4>{step.title}</h4>
-                    <p>{step.description}</p>
-                  </div>
-                  {index < processSteps.length - 1 && (
-                    <div className="process-arrow-new">→</div>
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-        </div>
+        <figure className="mn-story__media">
+          <ParallaxImage
+            src="/images/office-minaal.png"
+            alt="Inside the Minaal Publicity office in Rajkot"
+            loading="lazy"
+          />
+          <figcaption>
+            <span className="mn-story__year">1999</span>
+            <span>
+              Our roots in Rajkot.
+              <br />
+              Our reach across Saurashtra.
+            </span>
+          </figcaption>
+        </figure>
       </div>
+    </Section>
+
+    <StatsBar items={ABOUT_STATS} />
+
+    <Section tone="raised" spacing="lg">
+      <div className="mn-pillars">
+        {PILLARS.map((pillar) => (
+          <div key={pillar.eyebrow} className="mn-pillars__item">
+            <Eyebrow>{pillar.eyebrow}</Eyebrow>
+            <h2 className="mn-heading mn-heading--md">{pillar.title}</h2>
+            <p>{pillar.text}</p>
+          </div>
+        ))}
+      </div>
+    </Section>
+
+    <Section tone="deep" spacing="lg">
+      <SectionHeader
+        eyebrow="How we work"
+        title="From first conversation to lasting impact."
+      />
+      <FeatureList items={PROCESS_STEPS} columns={4} variant="step" />
+    </Section>
+
+    <CTASection />
+  </>
+);
+
+/* Phone composition — Reference/Minaal mobile/About.png */
+const MobileAbout = () => (
+  <>
+    <PageHero
+      title={HERO_TITLE}
+      lead="Outdoor expertise. Local roots. Since 1999."
+    >
+      <figure className="mn-m-figure">
+        <ParallaxImage
+          src="/images/office-minaal.png"
+          alt="Inside the Minaal Publicity office in Rajkot"
+          loading="lazy"
+        />
+        <figcaption>
+          <Eyebrow>Local roots. Lasting impressions.</Eyebrow>
+        </figcaption>
+      </figure>
+    </PageHero>
+
+    <StatsBar
+      highlight
+      items={ABOUT_STATS.map((stat) => ({
+        value: stat.mobileValue || stat.value,
+        label: stat.mobileLabel || stat.label,
+      }))}
+    />
+
+    <Section spacing="md">
+      <h2 className="mn-heading mn-heading--lg">
+        Rooted in Rajkot.
+        <br />
+        Seen across Saurashtra.
+      </h2>
+      <p className="mn-m-lead">
+        Since 1999, we’ve connected brands with people through strategic outdoor
+        locations and creative execution.
+      </p>
+    </Section>
+
+    <section className="mn-section mn-section--raised mn-section--sm">
+      <Container className="mn-m-statements">
+        {PILLARS.map((pillar) => (
+          <div key={pillar.mobileEyebrow} className="mn-m-statements__item">
+            <Eyebrow tone="accent">{pillar.mobileEyebrow}</Eyebrow>
+            <p>{pillar.mobileText}</p>
+          </div>
+        ))}
+      </Container>
     </section>
-  );
-};
+
+    <Section tone="deep" spacing="md">
+      <SectionHeader eyebrow="How we work" title="Big ideas. Clear steps." />
+      <FeatureList
+        items={PROCESS_STEPS}
+        variant="rows"
+        textKey="brief"
+        className="mn-features--inset"
+      />
+    </Section>
+
+    <CTASection />
+  </>
+);
+
+const About = () => (useIsMobile() ? <MobileAbout /> : <DesktopAbout />);
 
 export default About;
