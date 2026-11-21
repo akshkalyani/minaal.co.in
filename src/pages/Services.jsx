@@ -30,7 +30,7 @@ const DesktopServices = ({ onSelect }) => (
       </Eyebrow>
       <FeatureSplit
         image={FEATURED_SERVICE.image}
-        imageAlt="Illuminated billboard at night"
+        imageAlt="Illuminated billboard hoarding advertising at night in Rajkot, Gujarat – Minaal Publicity best outdoor hoardings"
         eyebrow={FEATURED_SERVICE.eyebrow}
         title={FEATURED_SERVICE.title}
         text={FEATURED_SERVICE.description}
@@ -102,6 +102,7 @@ const MobileServices = ({ onSelect }) => {
               key={service.title}
               layout="stacked"
               image={service.image}
+              alt={service.alt}
               title={service.mobileTitle || service.title}
               description={service.mobileText}
               onAction={() => onSelect(service)}

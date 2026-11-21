@@ -702,23 +702,23 @@
 }
 
 @keyframes mn-pan-left {
-  from { transform: scale(1.03) translateX(1.2%); }
-  to { transform: scale(1.03) translateX(-1.2%); }
+  from { transform: translateX(1.2%); }
+  to { transform: translateX(-1.2%); }
 }
 
 @keyframes mn-pan-right {
-  from { transform: scale(1.03) translateX(-1.2%); }
-  to { transform: scale(1.03) translateX(1.2%); }
+  from { transform: translateX(-1.2%); }
+  to { transform: translateX(1.2%); }
 }
 
 @keyframes mn-pan-up {
-  from { transform: scale(1.03) translateY(1.2%); }
-  to { transform: scale(1.03) translateY(-1.2%); }
+  from { transform: translateY(1.2%); }
+  to { transform: translateY(-1.2%); }
 }
 
 @keyframes mn-pan-down {
-  from { transform: scale(1.03) translateY(-1.2%); }
-  to { transform: scale(1.03) translateY(1.2%); }
+  from { transform: translateY(-1.2%); }
+  to { transform: translateY(1.2%); }
 }
 
 /* The outgoing slide stays underneath, still panning, while the new one fades in */
@@ -733,7 +733,6 @@
 @media (prefers-reduced-motion: reduce) {
   .mn-site .mn-slideshow__img {
     animation: mn-slide-fade 1.6s var(--mn-ease) both;
-    transform: scale(1.03);
   }
 }
 
@@ -1974,6 +1973,16 @@
 
 .mn-site .modal-header {
   border-color: var(--mn-line);
+  background: var(--mn-surface);
+}
+
+/* Sit above the fixed navbar (z-index 1000) and keep clear of it */
+.mn-site .modal-overlay {
+  z-index: 1100;
+}
+
+.mn-site .modal-card {
+  max-height: min(85vh, calc(100vh - 3rem));
 }
 
 .mn-site .modal-title {

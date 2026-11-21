@@ -77,7 +77,7 @@ const DesktopAbout = () => (
         <figure className="mn-story__media">
           <ParallaxImage
             src="/images/office-minaal.png"
-            alt="Inside the Minaal Publicity office in Rajkot"
+            alt="Minaal Publicity outdoor advertising agency office in Rajkot, Gujarat – established 1999"
             loading="lazy"
           />
           <figcaption>
@@ -128,7 +128,7 @@ const MobileAbout = () => (
       <figure className="mn-m-figure">
         <ParallaxImage
           src="/images/office-minaal.png"
-          alt="Inside the Minaal Publicity office in Rajkot"
+          alt="Minaal Publicity outdoor advertising agency office in Rajkot, Gujarat – established 1999"
           loading="lazy"
         />
         <figcaption>

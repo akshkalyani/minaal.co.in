@@ -10,6 +10,7 @@ import { ArrowUpRight, Button, Eyebrow } from "../ui";
  */
 const ServiceCard = ({
   image,
+  alt = "",
   imageFit = "cover",
   eyebrow,
   title,
@@ -20,7 +21,7 @@ const ServiceCard = ({
 }) => {
   const media = (
     <div className={`mn-service-card__image mn-service-card__image--${imageFit}`}>
-      <img src={image} alt="" loading="lazy" />
+      <img src={image} alt={alt} loading="lazy" />
     </div>
   );
 

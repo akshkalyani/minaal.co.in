@@ -33,7 +33,7 @@ const FeatureList = ({
           {variant !== "plain" && (
             <span className="mn-features__num">{String(index + start).padStart(2, "0")}</span>
           )}
-          <div className="mn-features__body">
+<div className="mn-features__body">
             <h3 className="mn-features__title">{item.title}</h3>
             {item[textKey] && <p className="mn-features__text">{item[textKey]}</p>}
           </div>

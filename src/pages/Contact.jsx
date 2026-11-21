@@ -104,7 +104,7 @@ const MobileContact = () => {
         <figure className="mn-m-visit">
           <ParallaxImage
             src={PHOTOS.jadeBlue}
-            alt="Jade Blue hoarding on a Rajkot street"
+            alt="Jade Blue fashion brand billboard hoarding at prime location in Rajkot – Minaal Publicity outdoor advertisement"
             loading="lazy"
           />
           <figcaption>

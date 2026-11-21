@@ -248,7 +248,9 @@ html.mn-smooth body::-webkit-scrollbar {
 }
 
 .mn-main.is-entering {
-  animation: mn-page-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* `backwards`, not `both`: a fill that outlives the animation keeps <main> as its own
+     stacking context, which traps the gallery modal beneath the fixed navbar */
+  animation: mn-page-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
 /* ===== REDUCED MOTION ===== */
