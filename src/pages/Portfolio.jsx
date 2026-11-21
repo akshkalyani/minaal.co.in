@@ -73,7 +73,7 @@ const Portfolio = () => {
             <Eyebrow tone="accent">Featured campaign</Eyebrow>
             <ParallaxImage
               src={featured.featuredImage}
-              alt={`${featured.brand} campaign in Rajkot`}
+              alt={`${featured.brand} outdoor hoarding advertisement campaign in Rajkot, Gujarat – Minaal Publicity`}
               loading="lazy"
             />
             <h2 className="mn-heading mn-heading--md">{featured.shortTitle}</h2>

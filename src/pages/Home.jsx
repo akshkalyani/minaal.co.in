@@ -123,7 +123,7 @@ const DesktopHome = () => (
       />
       <FeatureSplit
         image={PHOTOS.jadeBlue}
-        imageAlt="Jade Blue hoarding at a busy Rajkot junction"
+        imageAlt="Jade Blue fashion brand billboard hoarding at busy Rajkot junction – best outdoor advertising by Minaal Publicity"
         caption="Jade Blue / Outdoor brand presence"
         eyebrow="On the ground / Rajkot"
         title={

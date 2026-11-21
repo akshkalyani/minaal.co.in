@@ -137,6 +137,12 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   transition: transform 0.4s ease;
   aspect-ratio: 4/3;
+  /* button reset */
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
 }
 
 .modal-image-wrapper img {
@@ -148,7 +154,7 @@
 }
 
 .modal-image-wrapper:hover img {
-  transform: scale(1.08);
+  transform: scale(1.04);
 }
 
 /* Placeholder shown when no real image provided */
@@ -283,6 +289,87 @@
     height: 34px;
     font-size: 14px;
   }
+}
+
+/* ============================= */
+/* Lightbox */
+/* ============================= */
+
+.mn-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.95);
+  animation: fadeIn 0.2s ease forwards;
+  cursor: zoom-out;
+}
+
+.mn-lightbox img {
+  max-width: min(92vw, 1100px);
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 4px;
+  cursor: default;
+  user-select: none;
+}
+
+.mn-lightbox__close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s;
+}
+
+.mn-lightbox__close:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+.mn-lightbox__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s;
+}
+
+.mn-lightbox__arrow:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+.mn-lightbox__arrow--prev { left: 1.25rem; }
+.mn-lightbox__arrow--next { right: 1.25rem; }
+
+.mn-lightbox__count {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.5);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
 }
 
 /* Small phones */

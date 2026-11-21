@@ -42,16 +42,22 @@ export const FOOTER_LINKS = [
   { to: "/clients", label: "Our clients" },
 ];
 
-// Site photography — every image on the site comes from public/hero.
+// Site photography — every hero/feature image on the site comes from public/hero.
 export const PHOTOS = {
-  billboardNight: "/hero/Illuminated Gujarati Jewelry Billboard at Night.png",
-  roadsideKiosks: "/hero/Gujarat Roadside Billboards in Traffic.png",
-  streetDisplays: "/hero/Rajkot Street Jewelry Billboard Scene.png",
-  cityHoarding: "/hero/Sunlit Indian Street Intersection with Gandhi Statue.png",
+  billboardNight: "/hero/malabar.png",
+  roadsideKiosks: "/hero/minaal.png",
+  streetDisplays: "/hero/shilpa.png",
+  cityHoarding: "/hero/gulab.png",
   jadeBlue: "/hero/jadeblue.png",
+  manishBhindiMorning: "/hero/Manish Bhindi Jewels - morning.png",
+  manishBhindiNight: "/hero/manish-bhindi.png",
+  hathiMasala: "/hero/hathi-masala.png",
+  koraNight: "/hero/kora-night.png",
+  rkMorning: "/hero/rk-morning.png",
+  rkNight: "/hero/rk-night.png",
+  royalEnfield: "/hero/royalenfield.png",
 };
 
-// Home hero slideshow — every photo above, shown in random order.
 export const HERO_IMAGES = Object.values(PHOTOS);
 
 export const HOME_STATS = [
@@ -70,6 +76,7 @@ export const ABOUT_STATS = [
 export const MEDIA_CHANNELS = [
   {
     image: PHOTOS.billboardNight,
+    alt: "Illuminated billboard hoarding advertising at night in Rajkot, Gujarat – Minaal Publicity best hoardings",
     title: "Billboard advertising",
     text: "Premium visibility at scale.",
     mobileText: "Highways. City centres. Everyday impact.",
@@ -77,6 +84,7 @@ export const MEDIA_CHANNELS = [
   },
   {
     image: PHOTOS.roadsideKiosks,
+    alt: "Street kiosk and transit media outdoor advertising in Rajkot, Saurashtra – Minaal Publicity hoardings",
     title: "Transit & street media",
     mobileTitle: "Transit & street",
     text: "A presence in the everyday.",
@@ -84,6 +92,7 @@ export const MEDIA_CHANNELS = [
   },
   {
     image: PHOTOS.streetDisplays,
+    alt: "Digital outdoor display hoarding advertisement in Rajkot, Gujarat – Minaal Publicity",
     title: "Digital out-of-home",
     mobileTitle: "Digital displays",
     text: "Dynamic media. Lasting impact.",
@@ -159,6 +168,7 @@ export const PROCESS_STEPS = [
 
 export const FEATURED_SERVICE = {
   image: PHOTOS.billboardNight,
+  alt: "Large-format illuminated billboard hoarding at night – best outdoor hoarding advertisement in Rajkot, Gujarat by Minaal Publicity",
   eyebrow: "01 / Large-format media",
   title: "Billboard advertising",
   description:
@@ -172,6 +182,7 @@ export const FEATURED_SERVICE = {
 export const SERVICES = [
   {
     image: PHOTOS.roadsideKiosks,
+    alt: "Bus shelter and kiosk transit hoarding advertising in Rajkot, Saurashtra by Minaal Publicity",
     eyebrow: "02 / Transit & street",
     title: "Transit advertising",
     mobileTitle: "Transit & street media",
@@ -184,6 +195,7 @@ export const SERVICES = [
   },
   {
     image: PHOTOS.cityHoarding,
+    alt: "Retail outdoor branding hoarding advertisement in Rajkot, Gujarat – Minaal Publicity",
     eyebrow: "03 / Point of presence",
     title: "Retail branding",
     description:
@@ -194,6 +206,7 @@ export const SERVICES = [
   },
   {
     image: PHOTOS.streetDisplays,
+    alt: "Digital LED outdoor display hoarding in Rajkot, Gujarat – best advertising by Minaal Publicity",
     eyebrow: "04 / Digital • Most popular",
     title: "Digital LED displays",
     description:
@@ -205,6 +218,7 @@ export const SERVICES = [
   },
   {
     image: PHOTOS.roadsideKiosks,
+    alt: "Divider kiosk outdoor advertisement on Rajkot city roads – Minaal Publicity hoardings Saurashtra",
     eyebrow: "05 / Street • Most popular",
     title: "Divider kiosks",
     description:
@@ -226,15 +240,99 @@ export const PORTFOLIO_FILTERS = [
 export const PORTFOLIO_FILTERS_MOBILE = [
   { id: "all", label: "All work" },
   { id: "billboard", label: "Billboards" },
-  { id: "digital", label: "Digital" },
+  { id: "kiosk", label: "Kiosks" },
 ];
 
-const KORA_IMAGES = Array.from(
+/*
+  Campaign photos live in public/portfolio/<slug>/<slug>-NN.jpg (web-optimised copies of
+  the originals in public/images/<CLIENT>/). `gallery(slug, n)` lists the first n photos;
+  `cover` is the 1-based photo used where a single image is shown.
+*/
+const gallery = (slug, count) =>
+  Array.from({ length: count }, (_, i) => `/portfolio/${slug}/${slug}-${String(i + 1).padStart(2, "0")}.jpg`);
+
+const KORA_ARCHIVE = Array.from(
   { length: 26 },
   (_, i) => `/campaigns/kora/rajkot-hoarding-advertising-kora-${i + 3}.jpeg`
 );
 
 export const CAMPAIGNS = [
+  {
+    brand: "JADE BLUE",
+    brandSub: "Fashion",
+    eyebrow: "Premium hoardings / Fashion brand",
+    title: "Jade Blue Fashion Campaign",
+    description: "Hoardings and unipoles at prime city-centre junctions",
+    shortTitle: "Jade Blue Fashion",
+    shortDescription: "Outdoor brand presence in Rajkot.",
+    tags: ["Billboard", "Unipole"],
+    categories: ["billboard", "unipole"],
+    // Shown as the photo-led "Featured campaign" in the phone layout
+    featured: true,
+    featuredImage: "/portfolio/jade-blue/jade-blue-03.jpg",
+    images: gallery("jade-blue", 17),
+  },
+  {
+    brand: "KORA",
+    brandSub: "By Nilesh Mitesh",
+    eyebrow: "Advertisement in city / Fashion brand",
+    title: "Kora By Nilesh Mitesh Campaign",
+    description: "Full wraps on 50+ buses across Rajkot city",
+    shortTitle: "Kora By Nilesh Mitesh",
+    shortDescription: "50+ buses · Rajkot city",
+    tags: ["Billboard"],
+    categories: ["billboard"],
+    highlight: true,
+    images: [...gallery("kora", 7), ...KORA_ARCHIVE],
+  },
+  {
+    brand: "RADHIKA",
+    brandSub: "Jewellery",
+    eyebrow: "City wide presence / Jewellery brand",
+    title: "Radhika Jewellery Campaign",
+    description: "Strategic placements near iconic places around Rajkot City",
+    shortTitle: "Radhika Jewellery",
+    shortDescription: "Iconic locations · Rajkot",
+    tags: ["Kiosk", "Divider kiosk"],
+    categories: ["kiosk", "kiosk-divider"],
+    images: gallery("radhika-jewellers", 9),
+  },
+  {
+    brand: "MANISH BHINDI",
+    brandSub: "Jewels",
+    eyebrow: "Hoardings & divider kiosks / Jewellery brand",
+    title: "Manish Bhindi Jewels Campaign",
+    description: "Junction hoardings backed by rows of divider kiosks",
+    shortTitle: "Manish Bhindi Jewels",
+    shortDescription: "Hoardings & kiosks · Rajkot",
+    tags: ["Billboard", "Divider kiosk"],
+    categories: ["billboard", "kiosk", "kiosk-divider"],
+    images: gallery("manish-bhindi-jewels", 11),
+  },
+  {
+    brand: "HATHI",
+    brandSub: "Masala",
+    eyebrow: "Market hoardings / FMCG brand",
+    title: "Hathi Masala Campaign",
+    description: "Hoardings over busy market streets, lit for evening footfall",
+    shortTitle: "Hathi Masala",
+    shortDescription: "Market hoardings · Rajkot",
+    tags: ["Billboard"],
+    categories: ["billboard"],
+    images: gallery("hathi-masala", 6),
+  },
+  {
+    brand: "MAAHI",
+    brandSub: "Milk",
+    eyebrow: "Hoardings & divider kiosks / Dairy brand",
+    title: "Maahi Milk Campaign",
+    description: "Junction hoardings and kiosk runs along key city roads",
+    shortTitle: "Maahi Milk",
+    shortDescription: "Hoardings & kiosks · Rajkot",
+    tags: ["Billboard", "Divider kiosk"],
+    categories: ["billboard", "kiosk", "kiosk-divider"],
+    images: gallery("maahi-milk", 9),
+  },
   {
     brand: "GOPAL",
     brandSub: "Namkeen",
@@ -248,44 +346,136 @@ export const CAMPAIGNS = [
     images: ["/campaigns/gopal/gopal1.jpeg"],
   },
   {
-    brand: "KORA",
-    brandSub: "By Nilesh Mitesh",
-    eyebrow: "Advertisement in city / Fashion brand",
-    title: "Kora By Nilesh Mitesh Campaign",
-    description: "Full wraps on 50+ buses across Rajkot city",
-    shortTitle: "Kora By Nilesh Mitesh",
-    shortDescription: "50+ buses · Rajkot city",
+    brand: "ADANI",
+    brandSub: "Masala",
+    eyebrow: "Hoardings & unipole / FMCG brand",
+    title: "Adani Masala Campaign",
+    description: "Elevated hoardings and an illuminated unipole",
+    shortTitle: "Adani Masala",
+    shortDescription: "Hoardings & unipole · Rajkot",
+    tags: ["Billboard", "Unipole"],
+    categories: ["billboard", "unipole"],
+    images: gallery("adani-masala", 4),
+  },
+  {
+    brand: "KIA",
+    brandSub: "Motors",
+    eyebrow: "Rooftop hoarding / Automotive brand",
+    title: "Kia Motors Campaign",
+    description: "Illuminated rooftop hoarding above a busy market",
+    shortTitle: "Kia Motors",
+    shortDescription: "Rooftop hoarding · Rajkot",
     tags: ["Billboard"],
     categories: ["billboard"],
-    highlight: true,
-    images: KORA_IMAGES,
+    images: gallery("kia-motors", 2),
   },
   {
-    brand: "JADE BLUE",
-    brandSub: "Fashion",
-    eyebrow: "Premium hoardings / Fashion brand",
-    title: "Jade Blue Fashion Campaign",
-    description: "Prime city center LED screens with video content",
-    shortTitle: "Jade Blue Fashion",
-    shortDescription: "Outdoor brand presence in Rajkot.",
-    tags: ["Digital", "LED"],
-    categories: ["billboard", "digital"],
-    // Shown as the photo-led "Featured campaign" in the phone layout
-    featured: true,
-    featuredImage: PHOTOS.jadeBlue,
-    images: [PHOTOS.jadeBlue],
-  },
-  {
-    brand: "RADHIKA",
-    brandSub: "Jewellery",
-    eyebrow: "City wide presence / Jewellery brand",
-    title: "Radhika Jewellery Campaign",
-    description: "Strategic placements near iconic places around Rajkot City",
-    shortTitle: "Radhika Jewellery",
-    shortDescription: "Iconic locations · Rajkot",
-    tags: ["Billboard", "City center"],
+    brand: "ROYAL ENFIELD",
+    brandSub: "Motorcycles",
+    eyebrow: "Highway hoarding / Automotive brand",
+    title: "Royal Enfield Campaign",
+    description: "Large-format hoarding on a high-speed city corridor",
+    shortTitle: "Royal Enfield",
+    shortDescription: "Highway hoarding · Rajkot",
+    tags: ["Billboard", "Highway"],
     categories: ["billboard"],
-    images: [PHOTOS.billboardNight, PHOTOS.streetDisplays],
+    images: gallery("royal-enfield", 1),
+  },
+  {
+    brand: "EQUITY HYUNDAI",
+    brandSub: "Automotive",
+    eyebrow: "Divider kiosks / Automotive brand",
+    title: "Equity Hyundai Campaign",
+    description: "Pole kiosks along a main arterial road",
+    shortTitle: "Equity Hyundai",
+    shortDescription: "Divider kiosks · Rajkot",
+    tags: ["Divider kiosk"],
+    categories: ["kiosk", "kiosk-divider"],
+    images: gallery("equity-hyundai", 1),
+  },
+  {
+    brand: "THE FERN",
+    brandSub: "Resort, Diu",
+    eyebrow: "Rooftop hoardings / Hospitality brand",
+    title: "The Fern Resort Campaign",
+    description: "Rooftop hoardings promoting destination weddings",
+    shortTitle: "The Fern Resort",
+    shortDescription: "Rooftop hoardings · Rajkot",
+    tags: ["Billboard"],
+    categories: ["billboard"],
+    images: gallery("the-fern-resort", 3),
+  },
+  {
+    brand: "RK",
+    brandSub: "Real estate",
+    eyebrow: "Unipoles & hoardings / Real estate brand",
+    title: "RK Campaign",
+    description: "Unipoles and hoardings for new commercial and residential projects",
+    shortTitle: "RK",
+    shortDescription: "Unipoles & hoardings · Rajkot",
+    tags: ["Unipole", "Billboard"],
+    categories: ["unipole", "billboard"],
+    images: gallery("rk", 4),
+  },
+  {
+    brand: "LIC",
+    brandSub: "Insurance",
+    eyebrow: "Roadside hoarding / Financial services",
+    title: "LIC Campaign",
+    description: "Roadside hoarding on a high-footfall stretch",
+    shortTitle: "LIC",
+    shortDescription: "Roadside hoarding · Rajkot",
+    tags: ["Billboard"],
+    categories: ["billboard"],
+    images: gallery("lic", 2),
+  },
+  {
+    brand: "KAMAL",
+    brandSub: "Cement",
+    eyebrow: "Highway hoarding / Building materials",
+    title: "Kamal Cement Campaign",
+    description: "Highway hoarding for a building-materials brand",
+    shortTitle: "Kamal Cement",
+    shortDescription: "Highway hoarding · Rajkot",
+    tags: ["Billboard", "Highway"],
+    categories: ["billboard"],
+    images: gallery("kamal-cement", 2),
+  },
+  {
+    brand: "RMC",
+    brandSub: "Civic campaign",
+    eyebrow: "Unipoles / Public sector",
+    title: "RMC Campaign",
+    description: "Unipoles carrying public messaging along main roads",
+    shortTitle: "RMC",
+    shortDescription: "Unipoles · Rajkot",
+    tags: ["Unipole"],
+    categories: ["unipole"],
+    images: gallery("rmc", 2),
+  },
+  {
+    brand: "ATMIYA",
+    brandSub: "School",
+    eyebrow: "Facade hoarding / Education",
+    title: "Atmiya School Campaign",
+    description: "Facade hoarding at a busy commercial junction",
+    shortTitle: "Atmiya School",
+    shortDescription: "Facade hoarding · Rajkot",
+    tags: ["Billboard"],
+    categories: ["billboard"],
+    images: gallery("atmiya-school", 1),
+  },
+  {
+    brand: "GREENWOOD",
+    brandSub: "International School",
+    eyebrow: "Junction hoarding / Education",
+    title: "Greenwood International School Campaign",
+    description: "Admissions hoarding at a major traffic circle",
+    shortTitle: "Greenwood International School",
+    shortDescription: "Junction hoarding · Rajkot",
+    tags: ["Billboard"],
+    categories: ["billboard"],
+    images: gallery("greenwood-international-school", 2),
   },
 ];
 

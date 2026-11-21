@@ -20,19 +20,18 @@ const randomPan = () => PANS[Math.floor(Math.random() * PANS.length)];
  * interval: milliseconds each slide stays on screen
  */
 const HeroSlideshow = ({ images, interval = 7000, className = "" }) => {
-  const [slide, setSlide] = useState(() => ({
-    id: 0,
-    index: Math.floor(Math.random() * images.length),
-    pan: randomPan(),
-    prev: null,
-  }));
+  const [slide, setSlide] = useState(() => {
+    const index = Math.floor(Math.random() * images.length);
+    return { id: 0, index, next: randomOther(images.length, index), pan: randomPan(), prev: null };
+  });
 
   useEffect(() => {
     if (images.length < 2) return undefined;
     const timer = setInterval(() => {
       setSlide((s) => ({
         id: s.id + 1,
-        index: randomOther(images.length, s.index),
+        index: s.next,
+        next: randomOther(images.length, s.next),
         pan: randomPan(),
         prev: { ...s, prev: null },
       }));
@@ -40,12 +39,11 @@ const HeroSlideshow = ({ images, interval = 7000, className = "" }) => {
     return () => clearInterval(timer);
   }, [images.length, interval]);
 
-  // Warm the cache for every slide so crossfades never flash an empty frame
+  // The next slide is chosen one step ahead and loaded during the current one, so the
+  // crossfade never shows an empty frame — without downloading every image up front.
   useEffect(() => {
-    images.forEach((src) => {
-      new Image().src = src;
-    });
-  }, [images]);
+    if (images.length > 1) new Image().src = images[slide.next];
+  }, [images, slide.next]);
 
   const layers = slide.prev ? [slide.prev, slide] : [slide];
 

@@ -21,7 +21,7 @@ const LogoMarquee = ({ items, duration = items.length * 2.5, reverse = false }) 
               key={item.src}
               className={`mn-marquee__frame ${item.onDark ? "mn-marquee__frame--dark" : ""}`}
             >
-              <img src={item.src} alt={copy === 0 ? item.name : ""} loading="lazy" />
+              <img src={item.src} alt={copy === 0 ? `${item.name} – outdoor advertising client of Minaal Publicity, Rajkot` : ""} loading="lazy" />
             </li>
           ))}
         </ul>
